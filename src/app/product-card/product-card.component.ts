@@ -1,11 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Product } from '../models/product.model';
-import { NgIf } from '@angular/common';
+import { NgIf,NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-product-card',
   standalone: true,
-  imports: [NgIf],
+  imports: [NgIf,NgFor],
   templateUrl: "./product-card.component.html",
   styles: ``
 })

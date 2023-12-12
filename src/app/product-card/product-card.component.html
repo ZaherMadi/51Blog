@@ -6,3 +6,7 @@
 <p><b>❤️ {{myProduct.likes}}</b></p>
 <button (click)="onAddLike()">like</button>
 <p *ngIf="myProduct.size">Plusieurs tailles disponibles</p>
+<select *ngIf="myProduct.size">
+    <option *ngFor="let element of myProduct.size" [value]="element">{{element}}</option>
+
+</select>

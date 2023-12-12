@@ -21,10 +21,10 @@ ngOnInit(){
   this.product = [
     new Product(
     "Article Test",
-     "Description de mon article personnalisée",
+     "Il manque plus qu'un like pour avoir 510 like!",
      "../assets/51logo.png",
-    2300,
-    0,
+    510,
+    509,
     false,
     ), new Product(
       "Prestations informatique - Network",
@@ -33,7 +33,7 @@ ngOnInit(){
       2300,
       0,
       false,
-      ["XS","S","M"]      ),
+      ["Choisir...","Installation de réseau","Dépannage réseau","Amélioration du réseau"]      ),
       
       new Product(
         "Prestations informatique - Dev",
@@ -42,7 +42,7 @@ ngOnInit(){
         2000,
         0,
         false,
-        ["XS","S","M"]      )
+        ["Choisir...","Installation de réseau","Dépannage réseau","Amélioration du réseau"]      )
   ]
 
 }

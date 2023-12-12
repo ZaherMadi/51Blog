@@ -1,7 +1,8 @@
-<h2>{{title}}</h2>
-<img src="{{imageUrl}}" width="100">
-<p>{{description}}</p>
+<h2>{{myProduct.title}}</h2>
+<img src="{{myProduct.imageUrl}}" width="100">
+<p>{{myProduct.description}}</p>
 
-<p>{{price}} €</p>
-<p><b>❤️ {{likes}}</b></p>
-<button (click)="onAddLike(isLiked)">like</button>
+<p>{{myProduct.price}} €</p>
+<p><b>❤️ {{myProduct.likes}}</b></p>
+<button (click)="onAddLike()">like</button>
+<p *ngIf="myProduct.size">Plusieurs tailles disponibles</p>

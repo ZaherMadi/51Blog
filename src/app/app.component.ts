@@ -3,8 +3,6 @@ import { CommonModule, NgIf } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { ProductCardComponent } from './product-card/product-card.component';
 import { Product } from './models/product.model';
-
-
 @Component({
   selector: 'app-root',
   standalone: true,

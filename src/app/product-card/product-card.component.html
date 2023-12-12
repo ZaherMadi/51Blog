@@ -10,3 +10,16 @@
     <option *ngFor="let element of myProduct.size" [value]="element">{{element}}</option>
 
 </select>
+
+<mat-card>
+    <mat-card-title>{{myProduct.title}}</mat-card-title>
+    <img mat-card-image class="custom-image-size" src="{{myProduct.imageUrl}}">
+    <mat-card-content>{{myProduct.description}}</mat-card-content>
+
+    <mat-card-actions>
+        <button mat-button (click)="onAddLike()">{{myProduct.likes}} ❤️</button>
+      </mat-card-actions>
+
+
+
+</mat-card>

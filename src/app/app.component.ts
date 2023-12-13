@@ -8,7 +8,7 @@ import { Product } from './models/product.model';
   standalone: true,
   imports: [CommonModule, RouterOutlet, ProductCardComponent,NgIf],
   templateUrl: "./app.component.html",
-  styles: [],
+  styles: [``],
 })
 export class AppComponent implements OnInit{
   title = 'angularprojectII';

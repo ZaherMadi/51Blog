@@ -1,3 +1,6 @@
+<mat-grid-list cols="2" rowHeight="6:6">
+  <mat-grid-tile>
+    <div>
 <h2>{{myProduct.title}}</h2>
 <img src="{{myProduct.imageUrl}}" width="100">
 <p>{{myProduct.description}}</p>
@@ -10,12 +13,16 @@
     <option *ngFor="let element of myProduct.size" [value]="element">{{element}}</option>
 
 </select>
+</div>
 <br>
 <br>
 <br>
 <br>
 
-<mat-card class=".card">
+</mat-grid-tile>
+
+<mat-grid-tile>
+<mat-card class="card">
     <mat-card-title>{{myProduct.title}}</mat-card-title>
     <img mat-card-image class="custom-image-size" src="{{myProduct.imageUrl}}">
     <mat-card-content>{{myProduct.description}}</mat-card-content>
@@ -25,7 +32,7 @@
       </mat-card-actions>
 
 
-
+      
 
 
 <mat-form-field>
@@ -41,14 +48,19 @@
     @if (selected.hasError('required')) {
       <mat-error>You must make a selection</mat-error>
     }
-
-    <!-- @if (selected.hasError('pattern') && !selected.hasError('required')) {
-        <mat-error>Your selection is invalid</mat-error>
+<!-- 
+    @if (selected.hasError('pattern') && !selected.hasError('required')) {
+        <mat-error>Cette offre n'est plus disponible!</mat-error>
       } -->
 
   </mat-form-field>
 
 </mat-card>
+</mat-grid-tile>
+
+
+
+</mat-grid-list>
 <br>
 <br>
 <br>

@@ -1,3 +1,5 @@
 <div>
-    <app-product-card *ngFor="let element of product" [myProduct]="element"></app-product-card>
+<app-tri-articles></app-tri-articles> 
+<app-product-card *ngFor="let element of (product| sortByDate:ChoixPresentation)" [myProduct]="element"></app-product-card>
 </div>
+<!-- dropdom -->

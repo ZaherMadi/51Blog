@@ -1,67 +1,74 @@
-<mat-grid-list cols="2" rowHeight="6:6">
+ <mat-grid-list cols="2" rowHeight="500px"> <!--//6:6  -->
   <mat-grid-tile>
     <div>
-<h2>{{myProduct.title}}</h2>
-<img src="{{myProduct.imageUrl}}" width="100">
-<p>{{myProduct.description}}</p>
+      <h2>{{ myProduct.title | uppercase }}</h2>
+      <h6>releaseDate: {{myProduct.DateOfCreation | date }}</h6>
+      <img src="{{ myProduct.imageUrl }}" width="100" />
+      <p>{{ myProduct.description }}</p>
 
-<p>{{myProduct.price}} €</p>
-<p><b>❤️ {{myProduct.likes}}</b></p>
-<button (click)="onAddLike()">like</button>
-<p *ngIf="myProduct.size">Plusieurs tailles disponibles</p>
-<select *ngIf="myProduct.size">
-    <option *ngFor="let element of myProduct.size" [value]="element">{{element}}</option>
+      <b>{{ myProduct.price | currency : "EUR" }}</b>
 
-</select>
-</div>
-<br>
-<br>
-<br>
-<br>
+      <p>
+        <b>❤️ {{ myProduct.likes }}</b>
+      </p>
+      <button (click)="onAddLike()">like</button>
+      <p *ngIf="myProduct.size">Plusieurs tailles disponibles</p>
+      <select *ngIf="myProduct.size">
+        <option *ngFor="let element of myProduct.size" [value]="element">
+          {{ element }}
+        </option>
+      </select>
+    </div>
+    <br />
+    <br />
+    <br />
+    <br />
+  </mat-grid-tile>
 
-</mat-grid-tile>
+  <mat-grid-tile>
+    <mat-card class="card">
+      <mat-card-title>{{ myProduct.title }}</mat-card-title>
+      <img
+        mat-card-image
+        class="custom-image-size"
+        src="{{ myProduct.imageUrl }}"
+      />
+      <mat-card-content>{{ myProduct.description }}</mat-card-content>
+      <mat-card-content>{{ myProduct.price | currency : 'EUR' }}</mat-card-content>
+      <mat-card-content><h6>releaseDate: {{myProduct.DateOfCreation | date }}</h6></mat-card-content>
 
-<mat-grid-tile>
-<mat-card class="card">
-    <mat-card-title>{{myProduct.title}}</mat-card-title>
-    <img mat-card-image class="custom-image-size" src="{{myProduct.imageUrl}}">
-    <mat-card-content>{{myProduct.description}}</mat-card-content>
-
-    <mat-card-actions>
-        <button mat-button (click)="onAddLike()">{{myProduct.likes}} ❤️</button>
+      <mat-card-actions>
+        <button mat-button (click)="onAddLike()">
+          {{ myProduct.likes }} ❤️
+        </button>
       </mat-card-actions>
 
+      <mat-form-field>
+        <mat-label>Choose one</mat-label>
+        <mat-select [formControl]="selected" [errorStateMatcher]="matcher">
+          <mat-option></mat-option>
+          <mat-option
+            *ngFor="let element of myProduct.size"
+            [value]="element"
+            >{{ element }}</mat-option
+          >
+          <mat-option value="valid">Autres...</mat-option>
+          <!-- <mat-option value="invalid">Invalid option</mat-option> -->
+        </mat-select>
 
-      
-
-
-<mat-form-field>
-    <mat-label>Choose one</mat-label>
-    <mat-select [formControl]="selected" [errorStateMatcher]="matcher">
-      <mat-option></mat-option>
-      <mat-option *ngFor="let element of myProduct.size" [value]="element">{{element}}</mat-option>
-      <mat-option value="valid">Autres...</mat-option>
-      <!-- <mat-option value="invalid">Invalid option</mat-option> -->
-    </mat-select>
-
-    <mat-hint>Très bon choix!</mat-hint>
-    @if (selected.hasError('required')) {
-      <mat-error>You must make a selection</mat-error>
-    }
-<!-- 
+        <mat-hint>Très bon choix!</mat-hint>
+        @if (selected.hasError('required')) {
+        <mat-error>You must make a selection</mat-error>
+        }
+        <!-- 
     @if (selected.hasError('pattern') && !selected.hasError('required')) {
         <mat-error>Cette offre n'est plus disponible!</mat-error>
       } -->
-
-  </mat-form-field>
-
-</mat-card>
-</mat-grid-tile>
-
-
-
+      </mat-form-field>
+    </mat-card>
+  </mat-grid-tile>
 </mat-grid-list>
-<br>
-<br>
-<br>
-<br>
+<br />
+<br />
+<br />
+<br />

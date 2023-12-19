@@ -1,50 +1,34 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule, NgIf } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
-import { ProductCardComponent } from './product-card/product-card.component';
-import { Product } from './models/product.model';
+import { Component, LOCALE_ID, OnInit } from "@angular/core";
+import { CommonModule, NgIf, registerLocaleData } from "@angular/common";
+import { RouterOutlet } from "@angular/router";
+import { ProductCardComponent } from "./product-card/product-card.component";
+import { Product } from "./models/product.model";
+import localesfr from "@angular/common/locales/fr";
+import { TriArticlesComponent } from "./tri-articles/tri-articles.component";
+import { SortByDate } from "./pipes/product.pipe";
+registerLocaleData(localesfr);
+import {ProductsService} from './services/products.service'
+
 @Component({
-  selector: 'app-root',
+  selector: "app-root",
   standalone: true,
-  imports: [CommonModule, RouterOutlet, ProductCardComponent,NgIf],
+  imports: [CommonModule, RouterOutlet, ProductCardComponent, NgIf, SortByDate, TriArticlesComponent],
   templateUrl: "./app.component.html",
   styles: [``],
+  providers: [
+    {
+      provide: LOCALE_ID,
+      useValue: "fr-FR", // 'de-DE' for Germany, 'fr-FR' for France...
+    },
+  ],
 })
-export class AppComponent implements OnInit{
-  title = 'angularprojectII';
-  product! : Product[];
+export class AppComponent implements OnInit {
+  title = "angularprojectII";
+  ChoixPresentation = "asc";
+  product!: Product[];
 
-
-ngOnInit(){
-  this.product = [
-    new Product(
-    "Article Test",
-     "Il manque plus qu'un like pour avoir 510 like!",
-     "../assets/51logo.png",
-    510,
-    509,
-    false,
-    ), new Product(
-      "Prestations informatique - Network",
-       "Plusieurs offre s'offre à vous..",
-       "../assets/prestationtech.jpg",
-      2300,
-      0,
-      false,
-      ["Choisir...","Installation de réseau","Dépannage réseau","Amélioration du réseau"]      ),
-      
-      new Product(
-        "Prestations informatique - Dev",
-         "Plusieurs offre s'offre à vous..",
-         "../assets/7055112.jpg",
-        2000,
-        0,
-        false,
-        ["Choisir...","Installation de réseau","Dépannage réseau","Amélioration du réseau"]      )
-  ]
-
-}
-
-
-
+  constructor(private productsService: ProductsService) {}
+  ngOnInit() {
+    this.product = this.productsService.getProducts();
+  }
 }

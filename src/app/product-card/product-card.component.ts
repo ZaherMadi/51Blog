@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Product } from '../models/product.model';
-import { NgIf,NgFor } from '@angular/common';
+import { NgIf,NgFor, CommonModule, registerLocaleData } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import { FormControl, FormGroupDirective, NgForm, Validators,FormsModule, ReactiveFormsModule,} from '@angular/forms';
@@ -21,18 +21,19 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 @Component({
   selector: 'app-product-card',
   standalone: true,
-  imports: [NgIf,NgFor, MatCardModule, MatButtonModule,MatFormFieldModule, MatSelectModule, FormsModule, ReactiveFormsModule, MatInputModule,MatGridListModule],
+  imports: [NgIf,NgFor, MatCardModule, MatButtonModule,MatFormFieldModule, MatSelectModule, FormsModule, ReactiveFormsModule, MatInputModule,MatGridListModule, CommonModule],
   templateUrl: "./product-card.component.html",
   styleUrl: "./product-card.component.css"
 })
 
 export class ProductCardComponent{
 @Input() myProduct!: Product;
+@Input() ChoixPresentation!:string
 selected = new FormControl('valid', [Validators.required, Validators.pattern('valid')]);
 
 selectFormControl = new FormControl('valid', [Validators.required, Validators.pattern('valid')]);
 
-nativeSelectFormControl = new FormControl('valid', [
+ nativeSelectFormControl = new FormControl('valid', [
   Validators.required,
   Validators.pattern('valid'),
 ]);

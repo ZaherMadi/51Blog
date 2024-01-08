@@ -6,8 +6,9 @@ import { Product } from "./models/product.model";
 import localesfr from "@angular/common/locales/fr";
 import { TriArticlesComponent } from "./tri-articles/tri-articles.component";
 import { SortByDate } from "./pipes/product.pipe";
-registerLocaleData(localesfr);
 import {ProductsService} from './services/products.service'
+registerLocaleData(localesfr);
+
 
 @Component({
   selector: "app-root",
@@ -31,4 +32,9 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.product = this.productsService.getProducts();
   }
+  
+  handleChoixPresentationChange(newValue: string) {
+    this.ChoixPresentation = newValue;
+  }
+  
 }

@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../models/product.model';
 
+
 @Injectable({
   providedIn: 'root'
 })
+
 export class ProductsService {
 
   constructor() { }
@@ -61,6 +63,11 @@ export class ProductsService {
   
     getProducts() {
       return this.product;
+    }
+
+    onLikeProduct(product: Product): void {
+      if(product.isLiked)
+      {}
     }
 
 

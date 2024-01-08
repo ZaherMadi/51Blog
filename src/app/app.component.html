@@ -1,5 +1,9 @@
 <div>
-<app-tri-articles></app-tri-articles> 
+<app-tri-articles
+    [ChoixPresentation]="ChoixPresentation"
+    (choixPresentationChange)="handleChoixPresentationChange($any($event))">
+</app-tri-articles> 
+<h1>{{ChoixPresentation}}</h1>
 <app-product-card *ngFor="let element of (product| sortByDate:ChoixPresentation)" [myProduct]="element"></app-product-card>
 </div>
-<!-- dropdom -->
+ 

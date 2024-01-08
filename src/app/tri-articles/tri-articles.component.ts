@@ -1,4 +1,4 @@
-import { Component, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, FormGroupDirective, NgForm, Validators,FormsModule, ReactiveFormsModule,} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
@@ -14,13 +14,13 @@ import { CommonModule } from '@angular/common';
 })
 
 export class TriArticlesComponent {
-@Input() ChoixPresentation!: String;
+@Input() ChoixPresentation!: string;
 
-// @Output() ChoixPresentationChange;
 
-// function onSelectionChange(value: string) {
-//   this.ChoixPresentation = value;
-//   this.ChoixPresentationChange.emit(this.ChoixPresentation);
-// }
+@Output() ChoixPresentationChange = new EventEmitter<string>();
+
+  onSelectionChange(value: string) {
+    this.ChoixPresentationChange.emit(value);
+  }
 
 };

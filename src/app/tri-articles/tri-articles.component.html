@@ -1,12 +1,14 @@
+<br>
+<br><br>
+
 <form>
-    <h4>mat-select</h4>
     <mat-form-field>
-      <mat-label>Favorite food</mat-label>
-      <mat-select [(ngModel)]="ChoixPresentation" name="Presentation">
+      <mat-label>Tri</mat-label>
+      <mat-select [(ngModel)]="ChoixPresentation" (selectionChange)="onSelectionChange($event.value)" name="Presentation">
   <mat-option [value]="'asc'">Ascendant</mat-option>
   <mat-option [value]="'desc'">Descendant</mat-option>
   
       </mat-select>
     </mat-form-field>
-    <p> Selected food: {{ChoixPresentation}} </p>
+    <p> Tri: {{ChoixPresentation}} </p>
   </form>

@@ -1,14 +1,10 @@
-<br>
-<br><br>
-
 <form>
     <mat-form-field>
       <mat-label>Tri</mat-label>
-      <mat-select [(ngModel)]="ChoixPresentation" (selectionChange)="onSelectionChange($event.value)" name="Presentation">
+      <mat-select [(ngModel)]="ChoixPresentation" (selectionChange)="onSelectionChange($event)" name="Presentation">
   <mat-option [value]="'asc'">Ascendant</mat-option>
   <mat-option [value]="'desc'">Descendant</mat-option>
   
       </mat-select>
     </mat-form-field>
-    <p> Tri: {{ChoixPresentation}} </p>
   </form>

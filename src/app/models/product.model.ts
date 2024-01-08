@@ -14,7 +14,8 @@ export class Product {
         public price: number,
         public likes: number,
         public isLiked: boolean,
-        public size?: Array<string>,
-        public DateOfCreation?: Date,
+        public size: Array<string>,
+        public DateOfCreation: Date = new Date(),
+        public favorite? : boolean,
     ){}
 }

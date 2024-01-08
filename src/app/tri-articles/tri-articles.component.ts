@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, FormGroupDirective, NgForm, Validators,FormsModule, ReactiveFormsModule,} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
-import {MatSelectModule} from '@angular/material/select';
+import {MatSelectChange, MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { CommonModule } from '@angular/common';
 
@@ -19,8 +19,11 @@ export class TriArticlesComponent {
 
 @Output() ChoixPresentationChange = new EventEmitter<string>();
 
-  onSelectionChange(value: string) {
-    this.ChoixPresentationChange.emit(value);
-  }
+onSelectionChange(event: MatSelectChange) {
+  this.ChoixPresentationChange.emit(event.value);
+}
 
 };
+// onSearchTermChange(): void {
+//   this.searchTermChange.emit(this.searchTerm);
+// }

@@ -57,4 +57,17 @@ onAddLike()
     this.myProduct.isLiked = false;
   }
 }
+
+onAddFavorite()
+{
+  if(this.myProduct.favorite==false)
+  {
+    this.myProduct.favorite = true;
+  } 
+  else
+  {
+    this.myProduct.favorite = false;
+  }
+}
+
 }

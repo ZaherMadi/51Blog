@@ -1,0 +1,6 @@
+<mat-form-field appearance="fill">
+    <mat-label>Search products by keywords</mat-label>
+    <input matInput [(ngModel)]="searchTerm"  (ngModelChange)="onSearchTermChange()" />
+    <mat-icon matSuffix>search</mat-icon>
+</mat-form-field>
+  

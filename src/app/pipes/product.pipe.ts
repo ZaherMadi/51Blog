@@ -13,3 +13,29 @@ export class SortByDate implements PipeTransform {
     });
   }
 }
+
+@Pipe({ name: "sortByName", standalone: true })
+export class SortByName implements PipeTransform {
+  transform(products: Product[], order? :any): Product[] {
+    if(!order.includes('Name')) return products
+    
+    return products.sort((a, b) => {
+      const nameA = a.title.toLowerCase();
+      const nameB = b.title.toLowerCase();
+
+      if (order === 'AscName') {
+        return nameA.localeCompare(nameB);
+      } else {
+        return nameB.localeCompare(nameA);
+      }
+    });
+  }
+}
+
+// @Pipe({ name: "research", standalone: true })
+// export class Research implements PipeTransform {
+//   transform(products: Product[], order?: any) {
+//  }
+  
+// }
+

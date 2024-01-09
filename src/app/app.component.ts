@@ -5,7 +5,7 @@ import { ProductCardComponent } from "./product-card/product-card.component";
 import { Product } from "./models/product.model";
 import localesfr from "@angular/common/locales/fr";
 import { TriArticlesComponent } from "./tri-articles/tri-articles.component";
-import { SortByDate } from "./pipes/product.pipe";
+import { SortByDate, SortByName } from "./pipes/product.pipe";
 import {ProductsService} from './services/products.service'
 import {MatGridListModule} from '@angular/material/grid-list';
 import { HeaderComponent } from "./header/header.component";
@@ -21,7 +21,7 @@ registerLocaleData(localesfr);
 @Component({
   selector: "app-root",
   standalone: true,
-  imports: [CommonModule, HeaderComponent, RouterOutlet, ProductCardComponent, NgIf, SortByDate, TriArticlesComponent,MatGridListModule, FooterComponent, SearchBarComponent, MatCheckboxModule,MatRadioModule, FormsModule],
+  imports: [CommonModule, HeaderComponent, RouterOutlet, ProductCardComponent, NgIf, SortByDate, SortByName, TriArticlesComponent,MatGridListModule, FooterComponent, SearchBarComponent, MatCheckboxModule,MatRadioModule, FormsModule],
   templateUrl: "./app.component.html",
   styles: [`mat-checkbox{float: right}`],
   providers: [
@@ -38,6 +38,7 @@ export class AppComponent implements OnInit {
   product!: Product[];
   filteredProducts: Product[] = [];
   OnlyFavorite: boolean = false;
+  TriNom: string = "";
   
   constructor(private productsService: ProductsService) {}
   ngOnInit() {
@@ -45,17 +46,19 @@ export class AppComponent implements OnInit {
     this.filteredProducts = this.product
   }
   
-  handleChoixPresentationChange(newValue: string) {
+  onSelectionChange(newValue: string) {
     this.ChoixPresentation = newValue;
+    console.log(newValue)
+
   }
   
 
   handleSearchTermChange(newSearchTerm: string) {
     this.searchTerm = newSearchTerm;
-    this.filterAndSortProducts();
+    this.filterProducts();
   }
 
-  filterAndSortProducts() {
+  filterProducts() {
     this.filteredProducts = this.product
       .filter(product => product.title.toLowerCase().includes(this.searchTerm.toLowerCase()))
   
@@ -64,22 +67,6 @@ export class AppComponent implements OnInit {
       this.filteredProducts = this.filteredProducts
       .filter(product => product.favorite===true)
     }
-
-    if(this.ChoixPresentation === 'asc') {
-      this.filteredProducts.sort((a, b) => {
-        const dateA = new Date(a.DateOfCreation).getTime();
-        const dateB = new Date(b.DateOfCreation).getTime();
-        return dateA - dateB;
-      });
-    } else {
-      this.filteredProducts.sort((a, b) => {
-        const dateA = new Date(a.DateOfCreation).getTime();
-        const dateB = new Date(b.DateOfCreation).getTime();
-        return dateB - dateA;
-      });
-    }
-      
-
 
 
 

@@ -21,9 +21,7 @@ export class TriArticlesComponent {
 
 onSelectionChange(event: MatSelectChange) {
   this.ChoixPresentationChange.emit(event.value);
+  console.log(event.value)
 }
 
 };
-// onSearchTermChange(): void {
-//   this.searchTermChange.emit(this.searchTerm);
-// }

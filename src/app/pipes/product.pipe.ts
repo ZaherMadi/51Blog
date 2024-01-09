@@ -32,10 +32,5 @@ export class SortByName implements PipeTransform {
   }
 }
 
-// @Pipe({ name: "research", standalone: true })
-// export class Research implements PipeTransform {
-//   transform(products: Product[], order?: any) {
-//  }
-  
-// }
+
 

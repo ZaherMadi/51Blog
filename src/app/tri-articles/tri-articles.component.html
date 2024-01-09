@@ -2,9 +2,11 @@
     <mat-form-field>
       <mat-label>Tri</mat-label>
       <mat-select [(ngModel)]="ChoixPresentation" (selectionChange)="onSelectionChange($event)" name="Presentation">
-  <mat-option [value]="'asc'">Ascendant</mat-option>
-  <mat-option [value]="'desc'">Descendant</mat-option>
-  
+  <mat-option [value]="'asc'">Date ( Du plus ancien..)</mat-option>
+  <mat-option [value]="'desc'">Date ( Du plus récent..)</mat-option>
+  <mat-option [value]="'AscName'">Nom (A à Z)</mat-option>
+  <mat-option [value]="'DescName'">Nom (Z à A)</mat-option>
+
       </mat-select>
     </mat-form-field>
   </form>

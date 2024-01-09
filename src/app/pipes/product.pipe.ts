@@ -8,7 +8,8 @@ export class SortByDate implements PipeTransform {
     let desc = !(order && order === "asc");
 
     return products.sort((a, b) => {
-      if (desc) return b.DateOfCreation!.getTime() - a.DateOfCreation!.getTime();
+      if (desc)
+        return b.DateOfCreation!.getTime() - a.DateOfCreation!.getTime();
       else return a.DateOfCreation!.getTime() - b.DateOfCreation!.getTime();
     });
   }
@@ -16,14 +17,14 @@ export class SortByDate implements PipeTransform {
 
 @Pipe({ name: "sortByName", standalone: true })
 export class SortByName implements PipeTransform {
-  transform(products: Product[], order? :any): Product[] {
-    if(!order.includes('Name')) return products
-    
+  transform(products: Product[], order?: any): Product[] {
+    if (!order.includes("Name")) return products;
+
     return products.sort((a, b) => {
       const nameA = a.title.toLowerCase();
       const nameB = b.title.toLowerCase();
 
-      if (order === 'AscName') {
+      if (order === "AscName") {
         return nameA.localeCompare(nameB);
       } else {
         return nameB.localeCompare(nameA);
@@ -31,6 +32,3 @@ export class SortByName implements PipeTransform {
     });
   }
 }
-
-
-

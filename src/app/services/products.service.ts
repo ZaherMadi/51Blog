@@ -13,6 +13,7 @@ export class ProductsService {
 
   product: Product[] = [
       new Product(
+        1,
         "Prestation personnalisée",
         "On se like ?",
         "../assets/51logo.png",
@@ -30,6 +31,7 @@ export class ProductsService {
       ),
 
       new Product(
+        2,
         "Prestations informatique - Network",
         "Plusieurs offre s'offre à vous..",
         "../assets/prestationtech.jpg",
@@ -47,6 +49,7 @@ export class ProductsService {
       ),
 
       new Product(
+        3,
         "Prestations informatique - Dev",
         "Plusieurs offre s'offre à vous..",
         "../assets/7055112.jpg",
@@ -63,6 +66,7 @@ export class ProductsService {
         false
       ),
       new Product(
+        4,
         "Développement Web",
         "Création de sites web modernes et réactifs.",
         "../assets/webdev.jpg",
@@ -74,6 +78,7 @@ export class ProductsService {
         false
     ),
     new Product(
+      5,
         "Conception Graphique",
         "Services de conception graphique pour tous vos besoins.",
         "../assets/internet.jpg",
@@ -85,6 +90,7 @@ export class ProductsService {
         false
     ),
     new Product(
+      6,
         "Marketing Digital",
         "Boostez votre présence en ligne avec nos solutions marketing.",
         "../assets/Vector_2646.jpg",
@@ -99,6 +105,16 @@ export class ProductsService {
   
     getProducts() {
       return this.product;
+    }
+
+    getOne(id: number) : Product
+    {
+      let res = this.product.find((product) => product.id === id)
+      if(res) {
+        return res;
+      } else {
+        throw new Error("Product not found")
+      }
     }
 
     onLikeProduct(product: Product): void {

@@ -1,0 +1,23 @@
+<div>
+    <app-search-bar
+      (searchTermChange)="handleSearchTermChange($event)"
+    ></app-search-bar>
+    <mat-checkbox [(ngModel)]="OnlyFavorite" (ngModelChange)="filterProducts()"
+      >Afficher seulement les favoris</mat-checkbox
+    >
+  
+    <app-tri-articles
+      (ChoixPresentationChange)="onSelectionChange($event)"
+    ></app-tri-articles>
+  
+    <app-product-card
+      *ngFor="
+        let element of filteredProducts
+          | sortByDate : this.ChoixPresentation
+          | sortByName : this.ChoixPresentation
+      "
+      [myProduct]="element"
+    ></app-product-card>
+  
+  </div>
+  

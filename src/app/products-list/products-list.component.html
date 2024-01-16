@@ -9,7 +9,6 @@
     <app-tri-articles
       (ChoixPresentationChange)="onSelectionChange($event)"
     ></app-tri-articles>
-  
     <app-product-card
       *ngFor="
         let element of filteredProducts
@@ -18,6 +17,16 @@
       "
       [myProduct]="element"
     ></app-product-card>
+
+    <div class="element">
+      <a *ngFor="let element of filteredProducts
+      | sortByDate : this.ChoixPresentation
+      | sortByName : this.ChoixPresentation
+  "
+  [routerLink]="['Details', element.id]"
+  >
+  <app-product-card [myProduct]="element"></app-product-card></a>
+    </div>
   
   </div>
   

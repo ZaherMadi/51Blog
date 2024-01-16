@@ -2,8 +2,10 @@
   <mat-grid-tile>
     <mat-card class="card">
       <mat-card-title>{{ myProduct.title }}</mat-card-title>
-      <img
-        mat-card-image
+      <button mat-button (click)="addToCart(myProduct)"> <mat-icon>shopping_cart</mat-icon>
+        </button>
+        <img
+        mat-card-xl-image
         class="custom-image-size"
         src="{{ myProduct.imageUrl }}"
       />

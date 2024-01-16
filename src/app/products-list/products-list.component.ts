@@ -12,7 +12,7 @@ import { MatRadioModule } from "@angular/material/radio";
 import { FormsModule } from "@angular/forms";
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import { CommonModule, NgIf } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet, RouterModule } from '@angular/router';
 import { ProductCardComponent } from '../product-card/product-card.component';
 
 @Component({
@@ -21,6 +21,7 @@ import { ProductCardComponent } from '../product-card/product-card.component';
   imports: [
     CommonModule,
     RouterOutlet,
+    RouterModule,
     ProductCardComponent,
     NgIf,
     HeaderComponent,

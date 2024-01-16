@@ -1,9 +1,11 @@
 .custom-image-size {
-    max-width: 50%;
+      max-width: 195px;
     height: auto;
     display: block;
+    margin-bottom: 8px;
+
 }
 
 .card {
-    max-width: 45%;
+    max-width: 60%;
   }

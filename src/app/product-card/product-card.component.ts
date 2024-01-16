@@ -9,7 +9,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatGridListModule} from '@angular/material/grid-list';
-
+import {MatIconModule} from '@angular/material/icon';
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -21,7 +21,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 @Component({
   selector: 'app-product-card',
   standalone: true,
-  imports: [NgIf,NgFor, MatCardModule, MatButtonModule,MatFormFieldModule, MatSelectModule, FormsModule, ReactiveFormsModule, MatInputModule,MatGridListModule, CommonModule],
+  imports: [NgIf,NgFor, MatCardModule, MatIconModule, MatButtonModule,MatFormFieldModule, MatSelectModule, FormsModule, ReactiveFormsModule, MatInputModule,MatGridListModule, CommonModule],
   templateUrl: "./product-card.component.html",
   styleUrl: "./product-card.component.css"
 })
@@ -68,6 +68,25 @@ onAddFavorite()
   {
     this.myProduct.favorite = false;
   }
+
+}
+
+addToCart(product : Product)
+{
+let panier = localStorage.getItem('panier')
+if(panier){
+  let TabPanier = JSON.parse(panier)
+  TabPanier.push({id: product.id})
+  localStorage.setItem("panier", JSON.stringify(TabPanier))
+}
+  else
+  {
+    let TabPanier = []
+    TabPanier.push({id: product.id})
+    localStorage.setItem("panier", JSON.stringify(TabPanier))
+  }
+
+
 }
 
 }

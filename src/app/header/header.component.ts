@@ -12,4 +12,5 @@ import {MatMenuModule} from '@angular/material/menu';
 })
 export class HeaderComponent {
 page :string = "51Shop 🛒"
+
 }

@@ -2,7 +2,32 @@
   <title>Cart Details</title>
 </head>
 
-<div>cart works!</div>
+
+<mat-selection-list #test>
+  @for (element of this.TabArticles; track element) {
+    <mat-list-option>{{element.imageUrl}}</mat-list-option>
+    <mat-list-option>Title : {{element.title}}</mat-list-option>
+
+  }
+</mat-selection-list>
+
+<p>
+  Articles selectionnées: {{test.selectedOptions.selected.length}}
+</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
 <select name="" id="">
   <option value="">1</option>
   <option value="">2</option>
@@ -18,4 +43,4 @@
     type="text"
   /><br /><br />
   <input type="text" /><br /><br />
-</form>
+</form> -->

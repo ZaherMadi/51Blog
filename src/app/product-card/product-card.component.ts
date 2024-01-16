@@ -76,14 +76,19 @@ addToCart(product : Product)
 let panier = localStorage.getItem('panier')
 if(panier){
   let TabPanier = JSON.parse(panier)
-  TabPanier.push({id: product.id})
+  TabPanier.push(product)
   localStorage.setItem("panier", JSON.stringify(TabPanier))
+  console.log("Cart created")
+  console.log("Article Added to Cart")
+
+
 }
   else
   {
     let TabPanier = []
-    TabPanier.push({id: product.id})
+    TabPanier.push(product)
     localStorage.setItem("panier", JSON.stringify(TabPanier))
+    console.log("Article Added to Cart")
   }
 
 

@@ -2,8 +2,6 @@
   <mat-grid-tile>
     <mat-card class="card">
       <mat-card-title>{{ myProduct.title }}</mat-card-title>
-      <button mat-button (click)="addToCart(myProduct)"> <mat-icon>shopping_cart</mat-icon>
-        </button>
         <img
         mat-card-xl-image
         class="custom-image-size"
@@ -20,6 +18,9 @@
 
         <button mat-button (click)="onAddFavorite()">
           {{myProduct.favorite}}⭐
+        </button>
+        
+        <button mat-button (click)="addToCart(myProduct)"> <mat-icon>shopping_cart</mat-icon>
         </button>
       </mat-card-actions>
       <mat-form-field>

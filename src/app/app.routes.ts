@@ -7,7 +7,10 @@ import { ProductDetailComponent } from "./product-detail/product-detail.componen
 import { RedirectionPageComponent } from "./redirection-page/redirection-page.component";
 
 export const routes: Routes = [
-  { path: "", component: ProductsListComponent },
+  
+    {path: "", component: ProductsListComponent },
+    {path: "shop", component: ProductsListComponent },
+    {path: "cart" , component: CartComponent},
     {path: "Cart" , component: CartComponent},
     {path: "Details/:id" , component: ProductDetailComponent},
     {path: "**" , component: RedirectionPageComponent}

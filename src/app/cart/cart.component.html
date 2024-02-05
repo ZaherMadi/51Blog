@@ -4,16 +4,32 @@
 
 
 <mat-selection-list #test>
-  @for (element of this.TabArticles; track element) {
-    <mat-list-option>{{element.imageUrl}}</mat-list-option>
-    <mat-list-option>Title : {{element.title}}</mat-list-option>
 
-  }
+  @for (element of this.TabArticles; track element) {
+    <mat-card >
+    <mat-list-option [selected]="true" style="height: 40vw">
+    <img mat-card-image src={{element.imageUrl}} alt="imageArticleCart" width="120vw" height="auto">  
+    <mat-card-content> 
+    <p>Title : {{element.title}}</p>
+     <h6>{{element.price}}</h6>
+   </mat-card-content>
+    </mat-list-option>
+    </mat-card>
+
+
+}
+
 </mat-selection-list>
+
 
 <p>
   Articles selectionnées: {{test.selectedOptions.selected.length}}
 </p>
+<p>
+  Prix total: {{ calculateTotalPrice() | currency:'EUR' }}
+</p>
+
+
 
 
 

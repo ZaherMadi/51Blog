@@ -9,15 +9,15 @@
     <mat-icon>menu</mat-icon>
   </button>
   <mat-menu #menu="matMenu">
-    <button mat-menu-item>
+    <button mat-menu-item (click)="navigate('/')">
       <mat-icon>house</mat-icon>
       <span>Home</span>
     </button>
-    <button mat-menu-item>
+    <button mat-menu-item (click)="navigate('/shop')">
       <mat-icon>shopping_basket</mat-icon>
       <span>Shop</span>
     </button>
-    <button mat-menu-item disabled>
+    <button mat-menu-item disabled="false" (click)="navigate('/cart')">
       <mat-icon>shopping_cart</mat-icon>
       <span>Cart</span>
     </button>

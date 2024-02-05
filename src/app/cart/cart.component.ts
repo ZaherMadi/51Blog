@@ -5,6 +5,7 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from "@angular/forms";
 import { Product } from "../models/product.model";
 import {CurrencyPipe } from "@angular/common";
+import { MatCardModule } from "@angular/material/card";
 
 @Component({
   selector: "app-cart",
@@ -14,6 +15,7 @@ import {CurrencyPipe } from "@angular/common";
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
+    MatCardModule,
     CurrencyPipe
   ],
   templateUrl: "cart.component.html",
@@ -31,5 +33,15 @@ export class CartComponent implements OnInit {
     } else {
       this.TabArticles = [];
     }
+  }
+
+  calculateTotalPrice(): number {
+    let totalPrice = 0;
+    for (const element of this.TabArticles) {
+      if (element) { // Vérifiez si l'article est sélectionné
+        totalPrice += element.price;
+      }
+    }
+    return totalPrice;
   }
 }

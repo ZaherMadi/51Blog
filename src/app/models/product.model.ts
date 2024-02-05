@@ -20,3 +20,24 @@ export class Product {
         public favorite? : boolean,
     ){}
 }
+
+export class User {
+    constructor(
+        public id : number,
+        public gender: string,
+        public name: string,
+        public firstname: string,
+        public email: string,
+        public phone:number,
+        public DateOfBirth?: Date 
+    ){}
+}
+
+export class CartItem {
+    product: Product;
+    quantity: number;    
+    constructor(product: Product, quantity: number = 1) {
+        this.product = product;
+        this.quantity = quantity;
+    }
+  }

@@ -33,7 +33,41 @@
   Prix total: {{ calculateTotalPrice() | currency:'EUR' }}
 </p>
 
+<form (ngSubmit)="Submit()">
+<div class="matForm">
+  <mat-form-field>
+    <mat-label>Genre</mat-label>
+    <mat-select [(ngModel)]="myUser.gender" name="gender">
+      <mat-option value="Mr">Mr.</mat-option>
+      <mat-option value="Mme">Mme</mat-option>
 
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Nom</mat-label>
+        <input matInput placeholder="Nom" [(ngModel)]="myUser.firstname" name="firstname">
+  </mat-form-field>
+      
+  <mat-form-field>
+        <mat-label>Prenom</mat-label>
+        <input matInput placeholder="Prenom"  [(ngModel)]="myUser.name" name="name">
+  </mat-form-field>
+  
+  
+<mat-form-field>
+
+    <mat-label>Enter your email</mat-label>
+    <input matInput placeholder="pat@example.com"       [(ngModel)]="myUser.email"
+    [formControl]="email" required>
+    
+    @if (email.invalid) {
+      <mat-error>{{getErrorMessage()}}</mat-error>
+    }
+  </mat-form-field>
+    <button type="submit" mat-raised-button>Commander</button>
+  </div>
+
+  </form>
 
 
 

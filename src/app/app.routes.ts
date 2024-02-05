@@ -14,7 +14,7 @@ export const routes: Routes = [
     {path: "cart" , component: CartComponent},
     {path: "Cart" , component: CartComponent},
     {path: "Details/:id" , component: ProductDetailComponent},
-    {path: "**" , component: RedirectionPageComponent}
-    {path: "checkout", component: CheckoutComponent}
+    {path: "checkout", component: CheckoutComponent},
+    {path: "**" , component: RedirectionPageComponent},
 
 ];

@@ -1,0 +1,8 @@
+.matForm {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .dateForm{
+    margin-right: 20px;
+  }

@@ -15,7 +15,7 @@ export class Product {
         public price: number,
         public likes: number,
         public isLiked: boolean,
-        public size: Array<string>,
+        public options: Array<string>,
         public DateOfCreation: Date = new Date(),
         public favorite? : boolean,
     ){}
@@ -29,7 +29,8 @@ export class User {
         public firstname: string,
         public email: string,
         public phone:number,
-        public DateOfBirth?: Date 
+        public DateOfBirth?: Date,
+        public adresse? : string
     ){}
 }
 

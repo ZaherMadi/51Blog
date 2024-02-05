@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    margin-left: 1vw;
   }
   .dateForm{
     margin-right: 20px;

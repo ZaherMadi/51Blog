@@ -6,7 +6,7 @@
 <mat-selection-list #test>
 
   @for (element of this.TabArticles; track element) {
-    <mat-card style=" margin-top: 2vw;">
+    <mat-card style=" margin-top: 2vw; max-height: 20vw;">
     <mat-card-title>Article :</mat-card-title>
     <mat-list-option [selected]="true" style="height: 40vw;">
     <img mat-card-image src={{element.product.imageUrl}} alt="imageArticleCart" width="120vw" height="auto">  
@@ -67,7 +67,18 @@
     @if (email.invalid) {
       <mat-error>{{getErrorMessage()}}</mat-error>
     }
+
   </mat-form-field>
+
+
+
+  <mat-form-field>
+    <mat-label>Prenom</mat-label>
+    <input matInput placeholder="Adresse"  [(ngModel)]="myUser.adresse" name="name">
+</mat-form-field>
+
+
+
     <button type="submit" mat-raised-button>Commander</button>
   </div>
 

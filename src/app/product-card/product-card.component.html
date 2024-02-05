@@ -1,4 +1,4 @@
-<mat-grid-list cols="2:2" rowHeight="550px"> 
+<mat-grid-list cols="1" rowHeight="550px"> 
   <mat-grid-tile>
     <mat-card class="card">
       <mat-card-title>{{ myProduct.title }}</mat-card-title>
@@ -28,7 +28,7 @@
         <mat-select [formControl]="selected" [errorStateMatcher]="matcher">
           <mat-option></mat-option>
           <mat-option
-            *ngFor="let element of myProduct.size"
+            *ngFor="let element of myProduct.options"
             [value]="element"
             >{{ element }}</mat-option
           >

@@ -6,6 +6,7 @@ import { FormsModule } from "@angular/forms";
 import { Product } from "../models/product.model";
 import {CurrencyPipe } from "@angular/common";
 import { MatCardModule } from "@angular/material/card";
+import {MatIconModule} from '@angular/material/icon';
 
 @Component({
   selector: "app-cart",
@@ -16,7 +17,8 @@ import { MatCardModule } from "@angular/material/card";
     MatInputModule,
     FormsModule,
     MatCardModule,
-    CurrencyPipe
+    CurrencyPipe,
+    MatIconModule
   ],
   templateUrl: "cart.component.html",
   styles: ``
@@ -43,5 +45,11 @@ export class CartComponent implements OnInit {
       }
     }
     return totalPrice;
+  }
+
+  deleteItem(id: number) {
+    const itemId = id.toString(); // Convert number id to a string
+    localStorage.removeItem("id: 1")
+
   }
 }

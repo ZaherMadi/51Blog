@@ -9,14 +9,18 @@
     <mat-card style=" margin-top: 2vw;">
     <mat-card-title>Article :</mat-card-title>
     <mat-list-option [selected]="true" style="height: 40vw;">
-    <img mat-card-image src={{element.imageUrl}} alt="imageArticleCart" width="120vw" height="auto">  
+    <img mat-card-image src={{element.product.imageUrl}} alt="imageArticleCart" width="120vw" height="auto">  
     <mat-card-content> 
-    <p>Title : {{element.title}}</p>
-     <h6>{{element.price | currency: 'EUR'}} </h6>
+    <p>Title : {{element.product.title}}</p>
+     <h6>{{element.product.price | currency: 'EUR'}} </h6>
      
     </mat-card-content>
     </mat-list-option>
-    <button mat-button (click)="deleteItem(element.id)"> <mat-icon>delete_sweep</mat-icon>
+    <div>
+      Quantity:
+      <input type="number" [(ngModel)]="element.quantity" (change)="updateCart(element)">
+    </div>
+    <button mat-button (click)="deleteItem(element.product.id)"> <mat-icon>delete_sweep</mat-icon>
     </button>
     </mat-card> 
 

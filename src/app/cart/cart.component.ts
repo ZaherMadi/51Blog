@@ -3,7 +3,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from "@angular/forms";
-import { Product } from "../models/product.model";
+import { CartItem, Product } from "../models/product.model";
 import {CurrencyPipe } from "@angular/common";
 import { MatCardModule } from "@angular/material/card";
 import {MatIconModule} from '@angular/material/icon';
@@ -34,7 +34,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 })
 export class CartComponent implements OnInit {
   @Input() myProduct!: Product;
-  TabArticles: Product[] = [];
+  TabArticles: CartItem[] = [];
   @Input() myUser: User = new User(0, '', '', '', '',0,new Date);
   email = new FormControl('', [Validators.required, Validators.email]);
   constructor(private router: Router){}
@@ -60,17 +60,27 @@ export class CartComponent implements OnInit {
 
   calculateTotalPrice(): number {
     let totalPrice = 0;
-    for (const element of this.TabArticles) {
-      if (element) { // Vérifiez si l'article est sélectionné
-        totalPrice += element.price;
+    for (const item of this.TabArticles) {
+      if (item) {
+        totalPrice += (item.product.price * item.quantity);
       }
     }
     return totalPrice;
   }
 
+  updateCart(item: CartItem) {
+    // If quantity is 0, remove the item
+    if (item.quantity <= 0) {
+      this.deleteItem(item.product.id);
+    } else {
+      // Update localStorage
+      localStorage.setItem('panier', JSON.stringify(this.TabArticles));
+    }
+  }
+
   deleteItem(id: number) {
   // Supprimez l'élément du tableau TabArticles en utilisant filter ou une autre méthode appropriée.
-  this.TabArticles = this.TabArticles.filter(item => item.id !== id);
+  this.TabArticles = this.TabArticles.filter(element => element.product.id !== id);
 
   // Mettez à jour localStorage avec le nouveau tableau d'articles.
   localStorage.setItem('panier', JSON.stringify(this.TabArticles));

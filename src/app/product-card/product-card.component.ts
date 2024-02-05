@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Product } from '../models/product.model';
+import { CartItem, Product } from '../models/product.model';
 import { NgIf,NgFor, CommonModule, registerLocaleData } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
@@ -71,27 +71,19 @@ onAddFavorite()
 
 }
 
-addToCart(product : Product)
-{
-let panier = localStorage.getItem('panier')
-if(panier){
-  let TabPanier = JSON.parse(panier)
-  TabPanier.push(product)
-  localStorage.setItem("panier", JSON.stringify(TabPanier))
-  console.log("Cart created")
-  console.log("Article Added to Cart")
+addToCart(product: Product) {
+  let cart = localStorage.getItem('panier');
+  let cartItems = cart ? JSON.parse(cart) : [];
 
-
-}
-  else
-  {
-    let TabPanier = []
-    TabPanier.push(product)
-    localStorage.setItem("panier", JSON.stringify(TabPanier))
-    console.log("Article Added to Cart")
+  let existingItem = cartItems.find((item: CartItem) => item.product.id === product.id);
+  if (existingItem) {
+    existingItem.quantity++;
+  } else {
+    cartItems.push({ product: product, quantity: 1 });
   }
 
-
+  localStorage.setItem("panier", JSON.stringify(cartItems));
+  console.log("Article Added to Cart");
 }
 
 }
